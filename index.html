@@ -14,6 +14,8 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            opacity: 1;
+            transition: opacity 1s;
         }
         .content {
             text-align: center;
@@ -29,7 +31,24 @@
 <body>
     <div class="content">
         <h1>Welcome to here</h1>
-        <p>Maths...</p>
+        <p id="waitText">Wait.</p>
     </div>
+    <script>
+        let waitTextElement = document.getElementById('waitText');
+        let waitText = ["Wait.", "Wait..", "Wait..."];
+        let textIndex = 0;
+        let interval = setInterval(function() {
+            waitTextElement.innerHTML = waitText[textIndex];
+            textIndex = (textIndex + 1) % waitText.length;
+        }, 500); // 每500ms切换一次文字
+
+        setTimeout(function() {
+            clearInterval(interval);
+            document.body.style.opacity = 0;
+            setTimeout(function() {
+                window.location.href = "nextpage.html"; // 替换为你的目标页面
+            }, 1000); // 1秒后跳转
+        }, 2000); // 2秒后开始淡出
+    </script>
 </body>
 </html>
