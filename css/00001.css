@@ -82,8 +82,9 @@ body {
  
 
 .footer {
-    padding: 20px;
+    padding: 40px;
     text-align: center;
+    text-size: 10px;
     background: #ddd;
     color: #aaa;
 }
